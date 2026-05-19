@@ -1,7 +1,3 @@
-
-
-
-
 import os
 import re
 import json
@@ -14,6 +10,7 @@ from urllib.parse import urljoin, urldefrag, urlparse
 import requests
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
+
 
 SEARCH_TERMS = [
     "162 Clark Street",
@@ -37,23 +34,12 @@ START_URLS = [
 ALLOWED_DOMAIN = "www.newtonma.gov"
 
 RELEVANT_LINK_KEYWORDS = [
-    "agenda",
-    "minutes",
-    "meeting",
-    "notice",
-    "docket",
-    "packet",
-    "calendar",
-    "hearing",
-    "planning",
-    "zoning",
-    "land use",
-    "public works",
-    "traffic",
-    "committee",
-    "board",
-    "commission",
-    "archive",
+    "agenda", "minutes", "meeting", "notice", "docket", "packet",
+    "calendar", "hearing", "planning", "zoning", "land use",
+    "public works", "traffic", "committee", "board", "commission",
+    "archive", "archives", "public safety", "transportation",
+    "public facilities", "engineering", "construction", "sidewalk",
+    "special permit", "variance",
 ]
 
 MAX_PAGES_TO_CRAWL = 150
@@ -93,7 +79,6 @@ def is_allowed_url(url):
 
 def is_pdf_url(url):
     clean = url.lower().split("?")[0]
-
     return (
         clean.endswith(".pdf")
         or "/home/showpublisheddocument/" in clean
@@ -136,6 +121,7 @@ def make_id(term, url):
 def extract_context(text, term, window=250):
     lower = text.lower()
     idx = lower.find(term.lower())
+
     if idx == -1:
         return ""
 
@@ -164,7 +150,10 @@ URL:
 """
 
     if context:
-        body += f"\nNearby text:\n{context}\n"
+        body += f"""
+Nearby text:
+{context}
+"""
 
     msg.set_content(body)
 
@@ -193,7 +182,7 @@ def extract_page(url):
         if is_pdf_url(href):
             print(f"FOUND PDF/DOCUMENT: {href}")
             discovered_pdfs.append((text or "Newton PDF", href))
-    
+
         elif looks_relevant(text, href):
             discovered_pages.append(href)
 
@@ -216,6 +205,8 @@ def extract_pdf_text(url):
 
 
 def handle_matches(text, title, url, seen):
+    new_match_count = 0
+
     for term in matching_terms(text):
         mid = make_id(term, url)
 
@@ -223,7 +214,12 @@ def handle_matches(text, title, url, seen):
             context = extract_context(text, term)
             send_email(term, title, url, context)
             seen.add(mid)
-            print(f"MATCH: {term} in {url}")
+            new_match_count += 1
+            print(f"MATCH EMAIL SENT: {term} in {url}")
+        else:
+            print(f"MATCH ALREADY SEEN: {term} in {url}")
+
+    return new_match_count
 
 
 def main():
@@ -233,6 +229,13 @@ def main():
     visited_pages = set()
     visited_pdfs = set()
     pdf_queue = []
+
+    page_match_count = 0
+    pdf_match_count = 0
+    pdf_text_success = 0
+    pdf_text_empty = 0
+    pdf_read_failures = 0
+    discovered_pdf_count = 0
 
     while pages_to_visit and len(visited_pages) < MAX_PAGES_TO_CRAWL:
         url = pages_to_visit.pop(0)
@@ -250,13 +253,14 @@ def main():
             print(f"Failed page {url}: {e}")
             continue
 
-        handle_matches(text, title, url, seen)
+        page_match_count += handle_matches(text, title, url, seen)
 
         for page in pages:
             if page not in visited_pages and page not in pages_to_visit:
                 pages_to_visit.append(page)
 
         for pdf in pdfs:
+            discovered_pdf_count += 1
             pdf_queue.append(pdf)
 
     count = 0
@@ -276,15 +280,37 @@ def main():
         try:
             pdf_text = extract_pdf_text(pdf_url)
         except Exception as e:
+            pdf_read_failures += 1
             print(f"Failed PDF {pdf_url}: {e}")
             continue
 
-        handle_matches(pdf_text, title, pdf_url, seen)
+        if pdf_text.strip():
+            pdf_text_success += 1
+        else:
+            pdf_text_empty += 1
+
+        matches = matching_terms(pdf_text)
+
+        if matches:
+            print(f"MATCHES FOUND IN PDF: {pdf_url}")
+            print(f"Matched terms: {matches}")
+
+        pdf_match_count += handle_matches(pdf_text, title, pdf_url, seen)
 
     save_seen(seen)
 
+    print("")
+    print("----- SUMMARY -----")
     print(f"Visited pages: {len(visited_pages)}")
-    print(f"Visited PDFs: {len(visited_pdfs)}")
+    print(f"Discovered PDF/document links: {discovered_pdf_count}")
+    print(f"Visited PDFs/documents: {len(visited_pdfs)}")
+    print(f"PDFs/documents with readable text: {pdf_text_success}")
+    print(f"PDFs/documents with empty/unreadable text: {pdf_text_empty}")
+    print(f"PDF/document read failures: {pdf_read_failures}")
+    print(f"New webpage matches emailed: {page_match_count}")
+    print(f"New PDF/document matches emailed: {pdf_match_count}")
+    print(f"Total new matches emailed: {page_match_count + pdf_match_count}")
+    print("-------------------")
 
 
 if __name__ == "__main__":
