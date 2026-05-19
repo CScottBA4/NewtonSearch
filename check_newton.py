@@ -9,7 +9,7 @@ from urllib.parse import urljoin, urldefrag, urlparse
 
 import requests
 from bs4 import BeautifulSoup
-from pypdf import PdfReader
+import fitz  # PyMuPDF
 
 
 SEARCH_TERMS = [
@@ -189,17 +189,14 @@ def extract_page(url):
 
 def extract_pdf_text(url):
     r = fetch(url)
-    reader = PdfReader(BytesIO(r.content))
 
-    parts = []
+    text_parts = []
 
-    for page in reader.pages:
-        try:
-            parts.append(page.extract_text() or "")
-        except Exception:
-            pass
+    with fitz.open(stream=r.content, filetype="pdf") as doc:
+        for page in doc:
+            text_parts.append(page.get_text() or "")
 
-    return "\n".join(parts)
+    return "\n".join(text_parts)
 
 
 def handle_matches(text, title, url, seen):
