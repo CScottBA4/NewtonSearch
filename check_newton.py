@@ -42,8 +42,8 @@ RELEVANT_LINK_KEYWORDS = [
     "special permit", "variance",
 ]
 
-MAX_PAGES_TO_CRAWL = 1000
-MAX_PDFS_TO_READ = 1000
+MAX_PAGES_TO_CRAWL = 150
+MAX_PDFS_TO_READ = 250
 SEEN_FILE = "seen_matches.json"
 
 ALERT_EMAIL_TO = os.environ["ALERT_EMAIL_TO"]
@@ -180,9 +180,7 @@ def extract_page(url):
             continue
 
         if is_pdf_url(href):
-            print(f"FOUND PDF/DOCUMENT: {href}")
             discovered_pdfs.append((text or "Newton PDF", href))
-
         elif looks_relevant(text, href):
             discovered_pages.append(href)
 
@@ -215,9 +213,6 @@ def handle_matches(text, title, url, seen):
             send_email(term, title, url, context)
             seen.add(mid)
             new_match_count += 1
-            print(f"MATCH EMAIL SENT: {term} in {url}")
-        else:
-            print(f"MATCH ALREADY SEEN: {term} in {url}")
 
     return new_match_count
 
@@ -228,6 +223,7 @@ def main():
     pages_to_visit = [normalize_url(x) for x in START_URLS]
     visited_pages = set()
     visited_pdfs = set()
+    queued_pdfs = set()
     pdf_queue = []
 
     page_match_count = 0
@@ -245,12 +241,11 @@ def main():
 
         visited_pages.add(url)
 
-        print(f"Checking page: {url}")
+        print(f"Checking page: {url}", flush=True)
 
         try:
             title, text, pages, pdfs = extract_page(url)
-        except Exception as e:
-            print(f"Failed page {url}: {e}")
+        except Exception:
             continue
 
         page_match_count += handle_matches(text, title, url, seen)
@@ -259,9 +254,11 @@ def main():
             if page not in visited_pages and page not in pages_to_visit:
                 pages_to_visit.append(page)
 
-        for pdf in pdfs:
-            discovered_pdf_count += 1
-            pdf_queue.append(pdf)
+        for pdf_title, pdf_url in pdfs:
+            if pdf_url not in queued_pdfs:
+                queued_pdfs.add(pdf_url)
+                discovered_pdf_count += 1
+                pdf_queue.append((pdf_title, pdf_url))
 
     count = 0
 
@@ -275,25 +272,16 @@ def main():
         visited_pdfs.add(pdf_url)
         count += 1
 
-        print(f"Checking PDF: {pdf_url}")
-
         try:
             pdf_text = extract_pdf_text(pdf_url)
-        except Exception as e:
+        except Exception:
             pdf_read_failures += 1
-            print(f"Failed PDF {pdf_url}: {e}")
             continue
 
         if pdf_text.strip():
             pdf_text_success += 1
         else:
             pdf_text_empty += 1
-
-        matches = matching_terms(pdf_text)
-
-        if matches:
-            print(f"MATCHES FOUND IN PDF: {pdf_url}")
-            print(f"Matched terms: {matches}")
 
         pdf_match_count += handle_matches(pdf_text, title, pdf_url, seen)
 
@@ -302,7 +290,7 @@ def main():
     print("")
     print("----- SUMMARY -----")
     print(f"Visited pages: {len(visited_pages)}")
-    print(f"Discovered PDF/document links: {discovered_pdf_count}")
+    print(f"Discovered unique PDF/document links: {discovered_pdf_count}")
     print(f"Visited PDFs/documents: {len(visited_pdfs)}")
     print(f"PDFs/documents with readable text: {pdf_text_success}")
     print(f"PDFs/documents with empty/unreadable text: {pdf_text_empty}")
