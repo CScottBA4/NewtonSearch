@@ -97,7 +97,19 @@ def looks_relevant(text, url):
 
 
 def fetch(url):
-    headers = {"User-Agent": "Mozilla/5.0 Newton street monitor"}
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+            "Version/18.6 Safari/605.1.15"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,application/pdf,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Referer": "https://www.newtonma.gov/",
+    }
+
     r = requests.get(url, headers=headers, timeout=45)
     r.raise_for_status()
     return r
