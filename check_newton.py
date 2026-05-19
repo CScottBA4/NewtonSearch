@@ -13,7 +13,7 @@ from pypdf import PdfReader
 
 
 SEARCH_TERMS = [
-    "162 Clark Street",
+    "Newton",
     "162 Clark St",
     "Clark Street",
     "Clark St",
@@ -42,7 +42,7 @@ RELEVANT_LINK_KEYWORDS = [
     "special permit", "variance",
 ]
 
-MAX_PAGES_TO_CRAWL = 150
+MAX_PAGES_TO_CRAWL = 10
 MAX_PDFS_TO_READ = 250
 SEEN_FILE = "seen_matches.json"
 
