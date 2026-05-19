@@ -42,8 +42,8 @@ RELEVANT_LINK_KEYWORDS = [
     "special permit", "variance",
 ]
 
-MAX_PAGES_TO_CRAWL = 150
-MAX_PDFS_TO_READ = 250
+MAX_PAGES_TO_CRAWL = 1000
+MAX_PDFS_TO_READ = 1000
 SEEN_FILE = "seen_matches.json"
 
 ALERT_EMAIL_TO = os.environ["ALERT_EMAIL_TO"]
