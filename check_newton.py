@@ -88,7 +88,12 @@ def is_allowed_url(url):
 
 
 def is_pdf_url(url):
-    return url.lower().split("?")[0].endswith(".pdf")
+    clean = url.lower().split("?")[0]
+
+    return (
+        clean.endswith(".pdf")
+        or "/home/showpublisheddocument/" in clean
+    )
 
 
 def looks_relevant(text, url):
