@@ -1,3 +1,7 @@
+
+
+
+
 import os
 import re
 import json
@@ -187,8 +191,9 @@ def extract_page(url):
             continue
 
         if is_pdf_url(href):
-    print(f"FOUND PDF/DOCUMENT: {href}")
-    discovered_pdfs.append((text or "Newton PDF", href))
+            print(f"FOUND PDF/DOCUMENT: {href}")
+            discovered_pdfs.append((text or "Newton PDF", href))
+    
         elif looks_relevant(text, href):
             discovered_pages.append(href)
 
