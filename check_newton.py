@@ -10,6 +10,9 @@ from urllib.parse import urljoin, urldefrag, urlparse
 import requests
 from bs4 import BeautifulSoup
 import fitz  # PyMuPDF
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 SEARCH_TERMS = [
