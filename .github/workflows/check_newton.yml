@@ -2,7 +2,14 @@ name: Check Newton street mentions
 
 on:
   schedule:
+    # Main Clark Street monitor: every 6 hours.
     - cron: '0 */6 * * *'
+
+    # Keep-alive: twice per month. Public-repository scheduled workflows can be
+    # disabled after long periods without repository activity, so this creates
+    # a tiny heartbeat commit well before that inactivity window is reached.
+    - cron: '17 12 1,15 * *'
+
   workflow_dispatch:
 
 permissions:
@@ -10,6 +17,9 @@ permissions:
 
 jobs:
   check:
+    # Run the crawler for the 6-hour schedule and for manual runs, but not for
+    # the dedicated keep-alive schedule.
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 */6 * * *'
     runs-on: ubuntu-latest
 
     steps:
@@ -31,10 +41,33 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         run: python check_newton.py
 
-      - name: Commit seen matches
+      - name: Commit monitor state
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add seen_matches.json
-          git commit -m "Update seen matches" || echo "No new matches"
+          git commit -m "Update seen matches" || echo "No monitor-state changes"
           git push || true
+
+  keepalive:
+    # This job is deliberately independent of the crawler. Even if the Python
+    # monitor has a temporary problem, the repository can still receive its
+    # heartbeat activity.
+    if: github.event_name == 'schedule' && github.event.schedule == '17 12 1,15 * *'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Update keep-alive heartbeat
+        run: |
+          date -u '+%Y-%m-%dT%H:%M:%SZ' > .github/keepalive.txt
+
+      - name: Commit keep-alive heartbeat
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .github/keepalive.txt
+          git commit -m "Keep NewtonSearch scheduled workflow active"
+          git push
