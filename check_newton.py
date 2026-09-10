@@ -62,7 +62,6 @@ MAX_PDFS_TO_READ = 1000
 SEEN_FILE = "seen_matches.json"
 CONTEXT_WINDOW = 250
 MAX_CONTEXTS_IN_EMAIL = 5
-MAX_FAILURES_IN_EMAIL = 25
 
 ALERT_EMAIL_TO = os.environ["ALERT_EMAIL_TO"]
 SMTP_USER = os.environ["SMTP_USER"]
@@ -88,12 +87,10 @@ def load_seen():
     except FileNotFoundError:
         return state
 
-    # Old format: a JSON list of SHA256 IDs.
     if isinstance(data, list):
         state["legacy_ids"] = set(data)
         return state
 
-    # New format.
     if isinstance(data, dict):
         state["legacy_ids"] = set(data.get("legacy_ids", []))
         state["matches"] = data.get("matches", {})
@@ -131,10 +128,7 @@ def is_allowed_url(url):
 
 def is_pdf_url(url):
     clean = url.lower().split("?")[0]
-    return (
-        clean.endswith(".pdf")
-        or "/home/showpublisheddocument/" in clean
-    )
+    return clean.endswith(".pdf") or "/home/showpublisheddocument/" in clean
 
 
 def looks_relevant(text, url):
@@ -166,59 +160,41 @@ def contains_term(text, term):
 
 
 def matching_category(text):
-    """
-    Return one category per page/document.
-
-    The specific address always wins over the broader Clark Street category,
-    so a mention of 162 Clark Street does not generate duplicate emails.
-    """
+    """Return one category per page/document, with the specific address first."""
     for category in ("162 Clark Street", "Clark Street"):
         if any(contains_term(text, term) for term in SEARCH_GROUPS[category]):
             return category
-
     return None
 
 
 def legacy_make_id(term, url):
-    """Reproduce the ID scheme used by the original version of the script."""
     return hashlib.sha256(f"{term}|{url}".encode()).hexdigest()
 
 
 def legacy_terms_for_category(category):
     if category == "162 Clark Street":
         return SEARCH_GROUPS["162 Clark Street"]
-
     return SEARCH_GROUPS["Clark Street"]
 
 
 def was_seen_in_legacy_state(category, text, url, legacy_ids):
-    """
-    Check only the old IDs relevant to the selected category.
-
-    This means a previously known general Clark Street page will not suppress a
-    newly added 162 Clark Street mention on that same URL.
-    """
     for term in legacy_terms_for_category(category):
         if contains_term(text, term):
             if legacy_make_id(term, url) in legacy_ids:
                 return True
-
     return False
 
 
 def extract_contexts(text, terms, window=CONTEXT_WINDOW):
-    """Return de-duplicated text snippets around every matching occurrence."""
     contexts = []
     seen_contexts = set()
 
     for term in terms:
         pattern = re.compile(re.escape(term), re.IGNORECASE)
-
         for match in pattern.finditer(text):
             start = max(0, match.start() - window)
             end = min(len(text), match.end() + window)
             context = re.sub(r"\s+", " ", text[start:end]).strip()
-
             if context and context not in seen_contexts:
                 seen_contexts.add(context)
                 contexts.append(context)
@@ -231,12 +207,6 @@ def make_match_key(category, url):
 
 
 def make_content_fingerprint(category, contexts):
-    """
-    Fingerprint only the relevant nearby text.
-
-    This avoids re-alerting merely because an unrelated part of a large agenda
-    or webpage changed, while still detecting a changed/new Clark Street item.
-    """
     material = category + "\n" + "\n---\n".join(sorted(contexts))
     return hashlib.sha256(material.encode()).hexdigest()
 
@@ -301,34 +271,6 @@ URL:
         smtp.send_message(msg)
 
 
-def send_failure_email(failures):
-    msg = EmailMessage()
-    msg["Subject"] = f"NewtonSearch crawl warning: {len(failures)} failure(s)"
-    msg["From"] = SMTP_USER
-    msg["To"] = ALERT_EMAIL_TO
-
-    body = (
-        "NewtonSearch could not read some pages/documents during its latest "
-        "run. The rest of the crawl continued.\n\n"
-    )
-
-    for kind, url, error in failures[:MAX_FAILURES_IN_EMAIL]:
-        body += f"{kind}: {url}\nError: {error}\n\n"
-
-    if len(failures) > MAX_FAILURES_IN_EMAIL:
-        body += (
-            f"{len(failures) - MAX_FAILURES_IN_EMAIL} additional failure(s) "
-            "were omitted from this email. See the GitHub Actions run log "
-            "for the complete list.\n"
-        )
-
-    msg.set_content(body)
-
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-        smtp.login(SMTP_USER, SMTP_PASSWORD)
-        smtp.send_message(msg)
-
-
 def extract_page(url):
     r = fetch(url)
     soup = BeautifulSoup(r.text, "html.parser")
@@ -356,7 +298,6 @@ def extract_page(url):
 
 def extract_pdf_text(url):
     r = fetch(url)
-
     text_parts = []
 
     with fitz.open(stream=r.content, filetype="pdf") as doc:
@@ -367,21 +308,12 @@ def extract_pdf_text(url):
 
 
 def handle_match(text, title, url, state):
-    """
-    Send at most one alert for a page/document.
-
-    162 Clark Street is prioritized over general Clark Street. After the first
-    observation, an alert is sent again only when relevant nearby text changes.
-    """
     category = matching_category(text)
 
     if category is None:
         return 0
 
     contexts = extract_contexts(text, SEARCH_GROUPS[category])
-
-    # The category was found, so contexts should normally be non-empty. Keep a
-    # fallback fingerprint in case unexpected text extraction behavior occurs.
     if not contexts:
         contexts = [category]
 
@@ -393,13 +325,7 @@ def handle_match(text, title, url, state):
         if previous.get("fingerprint") == fingerprint:
             return 0
 
-        send_email(
-            category,
-            title,
-            url,
-            contexts,
-            is_change=True,
-        )
+        send_email(category, title, url, contexts, is_change=True)
         state["matches"][key] = {
             "category": category,
             "url": url,
@@ -407,14 +333,7 @@ def handle_match(text, title, url, state):
         }
         return 1
 
-    # One-time migration behavior: if this same category+URL was already
-    # alerted by the old script, establish the new fingerprint silently.
-    if was_seen_in_legacy_state(
-        category,
-        text,
-        url,
-        state["legacy_ids"],
-    ):
+    if was_seen_in_legacy_state(category, text, url, state["legacy_ids"]):
         state["matches"][key] = {
             "category": category,
             "url": url,
@@ -422,13 +341,7 @@ def handle_match(text, title, url, state):
         }
         return 0
 
-    send_email(
-        category,
-        title,
-        url,
-        contexts,
-        is_change=False,
-    )
+    send_email(category, title, url, contexts, is_change=False)
     state["matches"][key] = {
         "category": category,
         "url": url,
@@ -440,32 +353,19 @@ def handle_match(text, title, url, state):
 def failure_fingerprint(failures):
     if not failures:
         return ""
-
-    normalized = sorted(
-        f"{kind}|{url}|{error}"
-        for kind, url, error in failures
-    )
+    normalized = sorted(f"{kind}|{url}|{error}" for kind, url, error in failures)
     return hashlib.sha256("\n".join(normalized).encode()).hexdigest()
 
 
 def report_failures(failures, state):
-    """
-    Print every failure in the GitHub Actions log and email only when the set of
-    failures differs from the previous run, preventing repeated warning spam.
-    """
+    """Log crawl/read failures only. Never send warning emails."""
     print(f"Crawl failures: {len(failures)}")
 
     for kind, url, error in failures:
         print(f"  - {kind}: {url}")
         print(f"    {error}")
 
-    current_fingerprint = failure_fingerprint(failures)
-    previous_fingerprint = state.get("last_failure_fingerprint", "")
-
-    if failures and current_fingerprint != previous_fingerprint:
-        send_failure_email(failures)
-
-    state["last_failure_fingerprint"] = current_fingerprint
+    state["last_failure_fingerprint"] = failure_fingerprint(failures)
 
 
 def main():
@@ -491,7 +391,6 @@ def main():
             continue
 
         visited_pages.add(url)
-
         print(f"Checking page: {url}", flush=True)
 
         try:
@@ -517,7 +416,6 @@ def main():
     for title, pdf_url in pdf_queue:
         if count >= MAX_PDFS_TO_READ:
             break
-
         if pdf_url in visited_pdfs:
             continue
 
@@ -543,12 +441,7 @@ def main():
                 )
             )
 
-        pdf_match_count += handle_match(
-            pdf_text,
-            title,
-            pdf_url,
-            state,
-        )
+        pdf_match_count += handle_match(pdf_text, title, pdf_url, state)
 
     print("")
     print("----- SUMMARY -----")
@@ -556,10 +449,7 @@ def main():
     print(f"Discovered unique PDF/document links: {discovered_pdf_count}")
     print(f"Visited PDFs/documents: {len(visited_pdfs)}")
     print(f"PDFs/documents with readable text: {pdf_text_success}")
-    print(
-        "PDFs/documents with empty/unreadable text: "
-        f"{pdf_text_empty}"
-    )
+    print("PDFs/documents with empty/unreadable text: " f"{pdf_text_empty}")
     print(f"New webpage matches emailed: {page_match_count}")
     print(f"New PDF/document matches emailed: {pdf_match_count}")
     print(
