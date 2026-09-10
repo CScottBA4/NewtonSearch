@@ -2,8 +2,8 @@ name: Check Newton street mentions
 
 on:
   schedule:
-    # Main Clark Street monitor: every 6 hours.
-    - cron: '0 */6 * * *'
+    # Main Clark Street monitor: once daily at 12:00 UTC.
+    - cron: '0 12 * * *'
 
     # Keep-alive: twice per month. Public-repository scheduled workflows can be
     # disabled after long periods without repository activity, so this creates
@@ -17,9 +17,9 @@ permissions:
 
 jobs:
   check:
-    # Run the crawler for the 6-hour schedule and for manual runs, but not for
+    # Run the crawler for the daily schedule and for manual runs, but not for
     # the dedicated keep-alive schedule.
-    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 */6 * * *'
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 12 * * *'
     runs-on: ubuntu-latest
 
     steps:
