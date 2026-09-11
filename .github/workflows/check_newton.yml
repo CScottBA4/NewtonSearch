@@ -42,7 +42,9 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           MAX_PDFS_PER_RUN: '2500'
-          MAX_PDF_RECHECKS_PER_RUN: '500'
+          MAX_MONTHLY_RECHECKS: '250'
+          INTEGRITY_RECHECK_EVERY_RUNS: '30'
+          MAX_FAILED_RETRIES_PER_RUN: '100'
           OCR_DPI: '170'
           OCR_NATIVE_TEXT_THRESHOLD: '120'
         run: python check_newton.py
