@@ -17,6 +17,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 330
 
     steps:
       - name: Check out repo
@@ -27,6 +28,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install OCR engine
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -35,6 +41,10 @@ jobs:
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAX_PDFS_PER_RUN: '2500'
+          MAX_PDF_RECHECKS_PER_RUN: '500'
+          OCR_DPI: '170'
+          OCR_NATIVE_TEXT_THRESHOLD: '120'
         run: python check_newton.py
 
       - name: Commit monitor state
