@@ -64,11 +64,18 @@ INTEGRITY_RECHECK_EVERY_RUNS = int(
 MAX_FAILED_RETRIES_PER_RUN = int(
     os.environ.get("MAX_FAILED_RETRIES_PER_RUN", "100")
 )
+CHECKPOINT_EVERY_PDFS = int(
+    os.environ.get("CHECKPOINT_EVERY_PDFS", "25")
+)
 
-# OCR is used only on pages with little/no embedded text.
+# OCR is used only on pages with little/no embedded text. A per-page timeout
+# prevents one pathological scan from consuming the entire Actions run.
 OCR_DPI = int(os.environ.get("OCR_DPI", "170"))
 OCR_NATIVE_TEXT_THRESHOLD = int(
     os.environ.get("OCR_NATIVE_TEXT_THRESHOLD", "120")
+)
+OCR_PAGE_TIMEOUT_SECONDS = int(
+    os.environ.get("OCR_PAGE_TIMEOUT_SECONDS", "30")
 )
 
 SEEN_FILE = "seen_matches.json"
@@ -231,8 +238,15 @@ def save_seen(state):
         "baseline_pending": sorted(state["baseline_pending"]),
     }
 
-    with open(SEEN_FILE, "w", encoding="utf-8") as f:
+    temp_file = f"{SEEN_FILE}.tmp"
+    with open(temp_file, "w", encoding="utf-8") as f:
         json.dump(serializable, f, indent=2, sort_keys=True)
+        f.flush()
+        os.fsync(f.fileno())
+
+    # Atomic replacement prevents a timeout/cancellation from leaving a
+    # partially written JSON state file.
+    os.replace(temp_file, SEEN_FILE)
 
 
 def is_allowed_url(url):
@@ -472,7 +486,11 @@ def ocr_page(page):
         alpha=False,
     )
     image = Image.open(io.BytesIO(pix.tobytes("png")))
-    return pytesseract.image_to_string(image, config="--psm 3") or ""
+    return pytesseract.image_to_string(
+        image,
+        config="--psm 3",
+        timeout=OCR_PAGE_TIMEOUT_SECONDS,
+    ) or ""
 
 
 def extract_pdf_text_from_bytes(pdf_bytes):
@@ -616,6 +634,18 @@ def report_failures(failures, state):
         print(f"    {error}")
 
     state["last_failure_fingerprint"] = failure_fingerprint(failures)
+
+
+def checkpoint_state(state, processed_count):
+    """Persist local progress periodically so a later step can commit it."""
+    if CHECKPOINT_EVERY_PDFS <= 0:
+        return
+    if processed_count % CHECKPOINT_EVERY_PDFS == 0:
+        save_seen(state)
+        print(
+            f"Checkpointed monitor state after {processed_count} PDFs/documents.",
+            flush=True,
+        )
 
 
 def suffix_changed(candidate, previous):
@@ -780,6 +810,10 @@ def main():
             f"{len(state['baseline_pending'])} document identities.",
             flush=True,
         )
+        # Persist the baseline immediately. This makes a partial backfill safe:
+        # if the run later times out, already-existing archive documents remain
+        # classified as historical rather than appearing "new" next time.
+        save_seen(state)
 
     plan = select_pdfs_for_run(pdf_candidates, state)
     selected_pdfs = plan["selected"]
@@ -833,6 +867,7 @@ def main():
                 "last_scanned_run": current_run,
                 "status": "download_failed",
             }
+            checkpoint_state(state, index)
             continue
 
         content_hash = hashlib.sha256(pdf_bytes).hexdigest()
@@ -853,6 +888,7 @@ def main():
                 "last_scanned_run": current_run,
                 "status": "ok",
             }
+            checkpoint_state(state, index)
             continue
 
         try:
@@ -880,6 +916,7 @@ def main():
                 "content_hash": content_hash,
                 "status": "parse_failed",
             }
+            checkpoint_state(state, index)
             continue
 
         if ocr_errors:
@@ -924,6 +961,7 @@ def main():
 
         # A historical PDF remains silent until it has actually been parsed.
         state["baseline_pending"].discard(key)
+        checkpoint_state(state, index)
 
     remaining_historical = sum(
         1
