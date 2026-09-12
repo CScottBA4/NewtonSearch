@@ -21,6 +21,7 @@ jobs:
 
     steps:
       - name: Check out repo
+        id: checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -41,15 +42,26 @@ jobs:
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          MAX_PDFS_PER_RUN: '2500'
+          # 2,500 proved too large once OCR was enabled: the first live
+          # backfill hit the 5.5-hour job timeout at document 1,877.
+          # 1,000 keeps each daily batch comfortably bounded while new IDs
+          # always remain first priority.
+          MAX_PDFS_PER_RUN: '1000'
           MAX_MONTHLY_RECHECKS: '250'
           INTEGRITY_RECHECK_EVERY_RUNS: '30'
           MAX_FAILED_RETRIES_PER_RUN: '100'
+          CHECKPOINT_EVERY_PDFS: '25'
           OCR_DPI: '170'
           OCR_NATIVE_TEXT_THRESHOLD: '120'
+          OCR_PAGE_TIMEOUT_SECONDS: '30'
+        timeout-minutes: 300
         run: python check_newton.py
 
       - name: Commit monitor state
+        # The checker writes atomic checkpoints every 25 documents. Keep a
+        # 30-minute cushion after the checker timeout so partial progress can
+        # still be committed instead of being lost.
+        if: always() && steps.checkout.outcome == 'success'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
