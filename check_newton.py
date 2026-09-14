@@ -4,6 +4,7 @@ import re
 import json
 import hashlib
 import smtplib
+import time
 from email.message import EmailMessage
 from urllib.parse import urljoin, urldefrag, urlparse
 
@@ -78,6 +79,13 @@ OCR_PAGE_TIMEOUT_SECONDS = int(
     os.environ.get("OCR_PAGE_TIMEOUT_SECONDS", "30")
 )
 
+# Stop the checker cleanly before GitHub's hard timeout. The workflow gives the
+# Python step 5 hours; the script targets 4.5 hours so it has time to print a
+# summary, persist state, and let the commit step run.
+CHECKER_TIME_BUDGET_SECONDS = int(
+    os.environ.get("CHECKER_TIME_BUDGET_SECONDS", str(4 * 60 * 60 + 30 * 60))
+)
+
 SEEN_FILE = "seen_matches.json"
 CONTEXT_WINDOW = 250
 MAX_CONTEXTS_IN_EMAIL = 5
@@ -90,6 +98,10 @@ SHOWPUBLISH_RE = re.compile(
 ALERT_EMAIL_TO = os.environ["ALERT_EMAIL_TO"]
 SMTP_USER = os.environ["SMTP_USER"]
 SMTP_PASSWORD = os.environ["SMTP_PASSWORD"]
+
+
+class TimeBudgetReached(Exception):
+    """Raised internally to defer the current PDF without failing the run."""
 
 
 def empty_state():
@@ -493,9 +505,12 @@ def ocr_page(page):
     ) or ""
 
 
-def extract_pdf_text_from_bytes(pdf_bytes):
+def extract_pdf_text_from_bytes(pdf_bytes, deadline=None):
     """
     Extract PDF text page by page, OCRing only pages with little embedded text.
+
+    If the checker time budget is reached, raise TimeBudgetReached so the
+    current document is left pending for the next run rather than marked failed.
 
     Returns:
         text, native_pages, ocr_pages, ocr_pages_with_text, ocr_errors
@@ -508,6 +523,9 @@ def extract_pdf_text_from_bytes(pdf_bytes):
 
     with fitz.open(stream=pdf_bytes, filetype="pdf") as doc:
         for page in doc:
+            if deadline is not None and time.monotonic() >= deadline:
+                raise TimeBudgetReached()
+
             native_text = page.get_text() or ""
             compact_native = re.sub(r"\s+", " ", native_text).strip()
 
@@ -517,6 +535,10 @@ def extract_pdf_text_from_bytes(pdf_bytes):
                 continue
 
             ocr_pages += 1
+
+            if deadline is not None and time.monotonic() >= deadline:
+                raise TimeBudgetReached()
+
             try:
                 ocr_text = ocr_page(page)
             except Exception:
@@ -750,6 +772,9 @@ def select_pdfs_for_run(candidates, state):
 
 
 def main():
+    checker_started = time.monotonic()
+    deadline = checker_started + CHECKER_TIME_BUDGET_SECONDS
+
     state = load_seen()
     state["run_counter"] += 1
     current_run = state["run_counter"]
@@ -838,8 +863,20 @@ def main():
     ocr_pages_attempted = 0
     ocr_pages_with_text = 0
     ocr_page_errors = 0
+    time_budget_reached = False
+    deferred_due_to_time = 0
 
     for index, candidate in enumerate(selected_pdfs, start=1):
+        if time.monotonic() >= deadline:
+            time_budget_reached = True
+            deferred_due_to_time = len(selected_pdfs) - index + 1
+            print(
+                "Checker time budget reached before starting the next "
+                f"document; deferring {deferred_due_to_time} selected "
+                "document(s) to a future run.",
+                flush=True,
+            )
+            break
         key = candidate["key"]
         title = candidate["title"]
         pdf_url = candidate["url"]
@@ -898,11 +935,24 @@ def main():
                 ocr_pages,
                 ocr_text_pages,
                 ocr_errors,
-            ) = extract_pdf_text_from_bytes(pdf_bytes)
+            ) = extract_pdf_text_from_bytes(
+                pdf_bytes,
+                deadline=deadline,
+            )
             pdf_parsed += 1
             ocr_pages_attempted += ocr_pages
             ocr_pages_with_text += ocr_text_pages
             ocr_page_errors += ocr_errors
+        except TimeBudgetReached:
+            time_budget_reached = True
+            deferred_due_to_time = len(selected_pdfs) - index + 1
+            print(
+                "Checker time budget reached while processing "
+                f"{key}; leaving it pending and deferring "
+                f"{deferred_due_to_time} selected document(s) to a future run.",
+                flush=True,
+            )
+            break
         except Exception as exc:
             failures.append(("PDF/document parse", pdf_url, repr(exc)))
             state["pdfs"][key] = {
@@ -1000,6 +1050,12 @@ def main():
     print(f"OCR pages attempted: {ocr_pages_attempted}")
     print(f"OCR pages yielding text: {ocr_pages_with_text}")
     print(f"OCR page errors: {ocr_page_errors}")
+    print(f"Checker time budget reached: {time_budget_reached}")
+    print(f"Selected documents deferred by time budget: {deferred_due_to_time}")
+    print(
+        "Checker elapsed minutes: "
+        f"{(time.monotonic() - checker_started) / 60:.1f}"
+    )
     print(f"Never-scanned current document identities: {never_scanned_current}")
     print(f"Silent historical baseline identities remaining: {remaining_historical}")
     print(f"New webpage matches emailed: {page_match_count}")
