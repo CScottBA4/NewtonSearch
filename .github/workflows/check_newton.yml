@@ -54,6 +54,9 @@ jobs:
           OCR_DPI: '170'
           OCR_NATIVE_TEXT_THRESHOLD: '120'
           OCR_PAGE_TIMEOUT_SECONDS: '30'
+          # Exit cleanly after ~4.5 hours so the run can save/commit progress
+          # instead of GitHub marking the step as timed out.
+          CHECKER_TIME_BUDGET_SECONDS: '16200'
         timeout-minutes: 300
         run: python check_newton.py
 
