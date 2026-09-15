@@ -5,6 +5,8 @@ import json
 import hashlib
 import smtplib
 import time
+import multiprocessing
+from queue import Empty
 from email.message import EmailMessage
 from urllib.parse import urljoin, urldefrag, urlparse
 
@@ -78,6 +80,12 @@ OCR_NATIVE_TEXT_THRESHOLD = int(
 OCR_PAGE_TIMEOUT_SECONDS = int(
     os.environ.get("OCR_PAGE_TIMEOUT_SECONDS", "30")
 )
+# Hard ceiling for one complete PDF extraction job. This protects against
+# PyMuPDF/image rendering calls that can hang inside native code, where the
+# normal Python deadline checks cannot run.
+MAX_PDF_PROCESS_SECONDS = int(
+    os.environ.get("MAX_PDF_PROCESS_SECONDS", "600")
+)
 
 # Stop the checker cleanly before GitHub's hard timeout. The workflow gives the
 # Python step 5 hours; the script targets 4.5 hours so it has time to print a
@@ -102,6 +110,10 @@ SMTP_PASSWORD = os.environ["SMTP_PASSWORD"]
 
 class TimeBudgetReached(Exception):
     """Raised internally to defer the current PDF without failing the run."""
+
+
+class PDFProcessingTimeout(Exception):
+    """Raised when one PDF exceeds its own processing time limit."""
 
 
 def empty_state():
@@ -565,6 +577,89 @@ def extract_pdf_text_from_bytes(pdf_bytes, deadline=None):
     )
 
 
+def _pdf_extract_worker(pdf_bytes, result_queue):
+    """Run PDF extraction in a child process so a native-code hang is killable."""
+    try:
+        result = extract_pdf_text_from_bytes(pdf_bytes, deadline=None)
+        result_queue.put(("ok", result))
+    except Exception as exc:
+        result_queue.put(("error", repr(exc)))
+
+
+def extract_pdf_text_with_timeout(pdf_bytes, deadline):
+    """
+    Extract one PDF in a separate process.
+
+    The child can be terminated even if PyMuPDF or image rendering blocks inside
+    native code. The overall checker deadline still takes precedence.
+    """
+    remaining_budget = deadline - time.monotonic()
+    if remaining_budget <= 0:
+        raise TimeBudgetReached()
+
+    timeout_seconds = min(
+        MAX_PDF_PROCESS_SECONDS,
+        max(1, int(remaining_budget)),
+    )
+    limited_by_overall_budget = remaining_budget <= MAX_PDF_PROCESS_SECONDS
+
+    ctx = multiprocessing.get_context("fork")
+    result_queue = ctx.Queue(maxsize=1)
+    process = ctx.Process(
+        target=_pdf_extract_worker,
+        args=(pdf_bytes, result_queue),
+    )
+    process.start()
+
+    stop_at = time.monotonic() + timeout_seconds
+    message = None
+
+    try:
+        while time.monotonic() < stop_at:
+            remaining = stop_at - time.monotonic()
+            try:
+                message = result_queue.get(timeout=min(1.0, remaining))
+                break
+            except Empty:
+                if not process.is_alive():
+                    try:
+                        message = result_queue.get(timeout=1.0)
+                    except Empty:
+                        raise RuntimeError(
+                            "PDF extraction worker exited without a result "
+                            f"(exit code {process.exitcode})."
+                        )
+                    break
+
+        if message is None:
+            if process.is_alive():
+                process.terminate()
+                process.join(timeout=5)
+                if process.is_alive():
+                    process.kill()
+                    process.join(timeout=5)
+
+            if limited_by_overall_budget:
+                raise TimeBudgetReached()
+            raise PDFProcessingTimeout(
+                f"PDF processing exceeded {timeout_seconds} seconds."
+            )
+
+        status, payload = message
+        if status == "error":
+            raise RuntimeError(payload)
+
+        return payload
+    finally:
+        if process.is_alive():
+            process.join(timeout=2)
+            if process.is_alive():
+                process.terminate()
+                process.join(timeout=5)
+        result_queue.close()
+        result_queue.join_thread()
+
+
 def handle_match(
     text,
     title,
@@ -863,6 +958,7 @@ def main():
     ocr_pages_attempted = 0
     ocr_pages_with_text = 0
     ocr_page_errors = 0
+    pdf_processing_timeouts = 0
     time_budget_reached = False
     deferred_due_to_time = 0
 
@@ -935,7 +1031,7 @@ def main():
                 ocr_pages,
                 ocr_text_pages,
                 ocr_errors,
-            ) = extract_pdf_text_from_bytes(
+            ) = extract_pdf_text_with_timeout(
                 pdf_bytes,
                 deadline=deadline,
             )
@@ -953,6 +1049,28 @@ def main():
                 flush=True,
             )
             break
+        except PDFProcessingTimeout as exc:
+            pdf_processing_timeouts += 1
+            failures.append(("PDF processing timeout", pdf_url, str(exc)))
+            state["pdfs"][key] = {
+                **previous_pdf,
+                "title": title,
+                "url": pdf_url,
+                "canonical_url": candidate["canonical_url"],
+                "document_id": candidate["document_id"],
+                "suffix": candidate["suffix"],
+                "last_scanned_run": current_run,
+                "content_hash": content_hash,
+                "status": "processing_timeout",
+                "timeout_count": int(previous_pdf.get("timeout_count", 0)) + 1,
+            }
+            save_seen(state)
+            print(
+                f"Skipped {key} after exceeding the per-PDF processing limit; "
+                "continuing with the next document.",
+                flush=True,
+            )
+            continue
         except Exception as exc:
             failures.append(("PDF/document parse", pdf_url, repr(exc)))
             state["pdfs"][key] = {
@@ -1050,6 +1168,7 @@ def main():
     print(f"OCR pages attempted: {ocr_pages_attempted}")
     print(f"OCR pages yielding text: {ocr_pages_with_text}")
     print(f"OCR page errors: {ocr_page_errors}")
+    print(f"PDF processing timeouts: {pdf_processing_timeouts}")
     print(f"Checker time budget reached: {time_budget_reached}")
     print(f"Selected documents deferred by time budget: {deferred_due_to_time}")
     print(
