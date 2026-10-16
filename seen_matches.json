@@ -1227,7 +1227,7 @@
     "newton-doc:97582",
     "newton-doc:9768"
   ],
-  "last_failure_fingerprint": "5f90705d1cc29407cc2aca98eeb08dec525a9f2c391279511ce4a74940fc1212",
+  "last_failure_fingerprint": "471296e29478bc83c91deaf8e8cc65de6edf0a4b63053ba0087715cc12ca126d",
   "legacy_ids": [
     "088b7af1131c64a8f065f957f065e5839112ee98247ab0a8fb63c3c82a8dbcbc",
     "08cb427260287dbd8064451c1e5e36d388efb83a11134515f60ace24d2b58fcf",
@@ -25140,14 +25140,14 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/122731",
       "content_hash": "d17a3bb04024a59f00ac17fe76019f4b409fb81124c146efacd0ec5f33797697",
       "document_id": "122731",
-      "last_scanned_run": 32,
+      "last_scanned_run": 33,
       "native_pages": 1,
       "ocr_pages": 0,
       "ocr_pages_with_text": 0,
-      "status": "ok",
-      "suffix": "639276551708233642",
+      "status": "download_failed",
+      "suffix": "639276551708230000",
       "title": "By-right Review Queue",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/122731/639276551708233642"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/122731/639276551708230000"
     },
     "newton-doc:122733": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/122733",
@@ -27489,8 +27489,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/125090",
       "content_hash": "166935babb06751b5c97588101fed58be33019a01fd6a652539f91a29430fa93",
       "document_id": "125090",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "638690827898470000",
       "title": "December 10, 2024 Meeting Agenda",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/125090/638690827898470000"
@@ -31578,7 +31578,7 @@
     "newton-doc:127908": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/127908",
       "document_id": "127908",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "this PDF",
@@ -41193,8 +41193,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/134155",
       "content_hash": "386c6df0c5a7733589bd7211570a4e720fa6ddb2c181cba4071200a86f692769",
       "document_id": "134155",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "638999208225070000",
       "title": "Land Use Draft Council Order #261-25",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/134155/638999208225070000"
@@ -41216,8 +41216,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/134159",
       "content_hash": "686584f80d2160a0992cd7274ac70c1c9657b0197b0f15f6c6bc03dce155bcbb",
       "document_id": "134159",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "638999208232900000",
       "title": "Land Use Draft Council Order #339-25",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/134159/638999208232900000"
@@ -41239,8 +41239,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/134163",
       "content_hash": "5d1099e6976ddc31764351110af5c0b29bfdfc01366df46a332b775aeff3f70b",
       "document_id": "134163",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "638999208240370000",
       "title": "Land Use Draft Council Order #341-25",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/134163/638999208240370000"
@@ -44342,7 +44342,7 @@
     "newton-doc:135333": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/135333",
       "document_id": "135333",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "01-21-26 REVISED Public Safety & Transportation Committee Agenda",
@@ -46146,8 +46146,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/136039",
       "content_hash": "74117618ebac2075bc6010e6bf13186e2ffaa0951635cc235a4c064d6ea5faf5",
       "document_id": "136039",
-      "last_scanned_run": 25,
-      "status": "processing_timeout",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "639064899376170000",
       "timeout_count": 4,
       "title": "Nahanton St Figures",
@@ -46391,8 +46391,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/136128",
       "content_hash": "43d951e78fb4f768d0458d20d66594ece630a966cce32488e0cb45c6cba108ec",
       "document_id": "136128",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "639065949284330000",
       "title": "Land Use Draft Council Order 224 Melrose Street #69-26",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/136128/639065949284330000"
@@ -46440,8 +46440,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/136134",
       "content_hash": "8e97d4e368f774ed7b9a04b4d30db96857d89df7ef5aa510e4f8fbfd5131fe20",
       "document_id": "136134",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "639065949296900000",
       "title": "Land Use Draft Council Order 89 Redwood Rd #16-26",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/136134/639065949296900000"
@@ -46671,7 +46671,7 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/136274",
       "content_hash": "6c42453eb12fe1e66c30ef37b2aceef66f0872e7a3a50b38bf3319e8350a676b",
       "document_id": "136274",
-      "last_scanned_run": 22,
+      "last_scanned_run": 33,
       "native_pages": 8,
       "ocr_pages": 0,
       "ocr_pages_with_text": 0,
@@ -48425,7 +48425,7 @@
     "newton-doc:136974": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/136974",
       "document_id": "136974",
-      "last_scanned_run": 21,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639095261251330000",
       "title": "2023 Chestnut Hill Historic District Commission Recordings",
@@ -48603,7 +48603,7 @@
     "newton-doc:137012": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/137012",
       "document_id": "137012",
-      "last_scanned_run": 21,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639095272439770000",
       "title": "2024 Chestnut Hill Historic District Commission Recordings",
@@ -53006,7 +53006,7 @@
     "newton-doc:138760": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/138760",
       "document_id": "138760",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639144490731270000",
       "title": "05-20-26 Public Safety & Transportation Committee Agenda",
@@ -61051,14 +61051,14 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/141905",
       "content_hash": "283c30410134d227b8d142066698401f68b42a070cef5ddbdda285673fb94075",
       "document_id": "141905",
-      "last_scanned_run": 32,
+      "last_scanned_run": 33,
       "native_pages": 4,
       "ocr_pages": 0,
       "ocr_pages_with_text": 0,
-      "status": "ok",
-      "suffix": "639274836012400000",
+      "status": "download_failed",
+      "suffix": "639277449891600664",
       "title": "Weekly Construction Schedule",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/141905/639274836012400000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/141905/639277449891600664"
     },
     "newton-doc:141907": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/141907",
@@ -65527,6 +65527,51 @@
       "title": "10-19-26 City Council Reports Docket",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/143012"
     },
+    "newton-doc:143014": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143014",
+      "document_id": "143014",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639276625550400000",
+      "title": "10-19-26 City Council Docket",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143014/639276625550400000"
+    },
+    "newton-doc:143016": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143016",
+      "document_id": "143016",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639276629632370000",
+      "title": "Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143016/639276629632370000"
+    },
+    "newton-doc:143020": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143020",
+      "document_id": "143020",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639276648655030000",
+      "title": "Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143020/639276648655030000"
+    },
+    "newton-doc:143022": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143022",
+      "document_id": "143022",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639276661290400000",
+      "title": "10-22-26 Conservation Commission Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143022/639276661290400000"
+    },
+    "newton-doc:143024": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143024",
+      "document_id": "143024",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639276667934070000",
+      "title": "July",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143024/639276667934070000"
+    },
     "newton-doc:14303": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/14303",
       "content_hash": "53c85a35855068233b4ecfb4838452a1adc5dc38e401e8e29a14ac0ccc661bd9",
@@ -65553,6 +65598,33 @@
       "title": "04-05-17 Programs & Services Committee Agenda",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/14305/637237425048870000"
     },
+    "newton-doc:143060": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143060",
+      "document_id": "143060",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639276740776170000",
+      "title": "Newton Highlands Phase 1 Reimaging of Rodney Barker Square and Safety Improvements at four locations",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143060/639276740776170000"
+    },
+    "newton-doc:143066": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143066",
+      "document_id": "143066",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": null,
+      "title": "10-20-26 Land Use Planning Memo - #320-26 - Rowe Street (44)",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143066"
+    },
+    "newton-doc:143068": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143068",
+      "document_id": "143068",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": null,
+      "title": "#297-26 Draft Ordinance",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143068"
+    },
     "newton-doc:14307": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/14307",
       "content_hash": "0f5d78d9b946c986612cd2df9accc4a1fb405051cb29fcda8a55e90fc5445ca3",
@@ -65565,6 +65637,78 @@
       "suffix": "637237425055430000",
       "title": "04-05-17 Programs & Services Committee Report",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/14307/637237425055430000"
+    },
+    "newton-doc:143070": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143070",
+      "document_id": "143070",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": null,
+      "title": "Land Use Draft Council Order #309-26",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143070"
+    },
+    "newton-doc:143074": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143074",
+      "document_id": "143074",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639277390358545761",
+      "title": "10-7-26 Financial Audit Advisory Committee Report",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143074/639277390358545761"
+    },
+    "newton-doc:143076": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143076",
+      "document_id": "143076",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639277396271410686",
+      "title": "10-22-26 Traffic Council Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143076/639277396271410686"
+    },
+    "newton-doc:143078": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143078",
+      "document_id": "143078",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": null,
+      "title": "10-22-26 Traffic Council  Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143078"
+    },
+    "newton-doc:143080": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143080",
+      "document_id": "143080",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639277406199646630",
+      "title": "10-20-26 Licensing Commission Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143080/639277406199646630"
+    },
+    "newton-doc:143082": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143082",
+      "document_id": "143082",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639277426341083349",
+      "title": "10-21-26 Public Safety & Transportation Committee Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143082/639277426341083349"
+    },
+    "newton-doc:143084": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143084",
+      "document_id": "143084",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": null,
+      "title": "10-20-26 Board of License Commissioners Meeting Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143084"
+    },
+    "newton-doc:143086": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143086",
+      "document_id": "143086",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": null,
+      "title": "10-21-26 Public Safety and Transportation Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143086"
     },
     "newton-doc:14309": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/14309",
@@ -65579,6 +65723,15 @@
       "title": "04-25-17 Programs & Services Committee Agenda",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/14309/637237425060730000"
     },
+    "newton-doc:143102": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143102",
+      "document_id": "143102",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": null,
+      "title": "10-21-26 Public Facilities Agenda",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143102"
+    },
     "newton-doc:14311": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/14311",
       "content_hash": "e25c7896cf5ee1363d8bdc88f010790e9e9d480bd00771a3388e8ef43682925e",
@@ -65591,6 +65744,15 @@
       "suffix": "637237425068400000",
       "title": "04-26-17 Programs & Services Committee Agenda - BUDGET",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/14311/637237425068400000"
+    },
+    "newton-doc:143128": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/143128",
+      "document_id": "143128",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639277456501638659",
+      "title": "10-07-26 Public Safety & Transportation Committee Report",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/143128/639277456501638659"
     },
     "newton-doc:14313": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/14313",
@@ -97005,8 +97167,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21495",
       "content_hash": "80edf3c8efca0d1a89e770f35749b182868b9350b64ee1ac38bb658f3811853f",
       "document_id": "21495",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244259136470000",
       "title": "02-17-15 Accounting & Audit Committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21495/637244259136470000"
@@ -97054,8 +97216,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21503",
       "content_hash": "847233366d43c49603d82bb92e07a6d82d555026d8a7a0b929699fd419eadce3",
       "document_id": "21503",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244259156670000",
       "title": "02-28-13 Accounting & Audit Committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21503/637244259156670000"
@@ -97103,8 +97265,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21511",
       "content_hash": "8191e99476dec78100836898d64cc193e45c8a2a6f683ae2fe1dd860d8f9bb12",
       "document_id": "21511",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244259181900000",
       "title": "03-24-15 Accounting & Audit Committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21511/637244259181900000"
@@ -97178,8 +97340,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21523",
       "content_hash": "2f8c6c96fab1c5ebd9b38744d99647b79b396db7132278f25218e58bf7b8649e",
       "document_id": "21523",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244259216370000",
       "title": "04-23-15 Accounting & Audit Committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21523/637244259216370000"
@@ -97240,8 +97402,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21533",
       "content_hash": "d3788c549782df59aa0944a7d6fbc627e334a9686ea675bd792c024e02c0690a",
       "document_id": "21533",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244259863830000",
       "title": "07-17-12 Accounting & Audit Committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21533/637244259863830000"
@@ -97276,8 +97438,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21539",
       "content_hash": "5a7b5aeafed58d2c06b583b2edede687886b8530227d844471a0f246e1a93795",
       "document_id": "21539",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244266969070000",
       "title": "07-12-12 Investment Policies Sub-committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21539/637244266969070000"
@@ -97312,8 +97474,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21545",
       "content_hash": "3192124612163cc963b77935f8a20ec2167b141a2709c8b985f84c469aa219d6",
       "document_id": "21545",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244266987400000",
       "title": "09-12-12 Investment Policies Sub-committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21545/637244266987400000"
@@ -97348,8 +97510,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21551",
       "content_hash": "cb886c49524529c1302e4df1fb74df4ad879bb9f1ac5f00d7de1b39b247dc515",
       "document_id": "21551",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244267003970000",
       "title": "10-24-12 Investment Policies Sub-committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21551/637244267003970000"
@@ -97371,8 +97533,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21555",
       "content_hash": "03ab74bbb946a04b050602d78110771ca456263e5193432cf4aeb26977a3c948",
       "document_id": "21555",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244267015570000",
       "title": "12-04-12 Investment Policies Sub-committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21555/637244267015570000"
@@ -97407,8 +97569,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/21561",
       "content_hash": "57dd0be63b7ce172a10a0f19f71e9ab7f56adaaf410e4d8c8171933a126f94d4",
       "document_id": "21561",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637244270405830000",
       "title": "12-07-12 Internal Controls Sub-committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/21561/637244270405830000"
@@ -113104,8 +113266,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29743",
       "content_hash": "dce30b0fe4d4c084923e651c77574e748db238745e2123eb7915db1b469cf6f5",
       "document_id": "29743",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637268592149600000",
       "title": "02-21-13 Accounting & Audit Committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/29743/637268592149600000"
@@ -113114,8 +113276,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29745",
       "content_hash": "e37a4dd53cb07a1829bdf53e42728c23de6686a763e27398f9254cd72fda5afb",
       "document_id": "29745",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637268592159930000",
       "title": "04-13-16 Accounting & Audit Committee Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/29745/637268592159930000"
@@ -113160,6 +113322,24 @@
       "title": "02-27-20 Traffic Council Audio",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/29761/637268612052770000"
     },
+    "newton-doc:29771": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29771",
+      "document_id": "29771",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "638617521702600000",
+      "title": "Chapter 5",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/29771/638617521702600000"
+    },
+    "newton-doc:29795": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29795",
+      "document_id": "29795",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "638865316746070000",
+      "title": "Chapter 17",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/29795/638865316746070000"
+    },
     "newton-doc:29799": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29799",
       "content_hash": "a471e73f31225d1e3da00e4236c15f9b06bb802db7187185ee2a3c517bbddccd",
@@ -113185,6 +113365,15 @@
       "suffix": "637218448071500000",
       "title": "School Committee Annotated Document for April 6 Review",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/298/637218448071500000"
+    },
+    "newton-doc:29803": {
+      "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29803",
+      "document_id": "29803",
+      "last_scanned_run": 33,
+      "status": "download_failed",
+      "suffix": "639092573659200000",
+      "title": "Chapter 20",
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/29803/639092573659200000"
     },
     "newton-doc:29807": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29807",
@@ -113215,7 +113404,7 @@
     "newton-doc:29822": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/29822",
       "document_id": "29822",
-      "last_scanned_run": 24,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639035614022900000",
       "title": "Zoning Ordinance",
@@ -115560,8 +115749,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/32305",
       "content_hash": "ac4fc0a2d74e0c95f18b010cdef3df10005d131fb8afce303a9a476471d70d91",
       "document_id": "32305",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637274459614470000",
       "title": "2011-06-02 LNC Minutes",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/32305/637274459614470000"
@@ -116974,8 +117163,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/33993",
       "content_hash": "e3a4b7669285fb00be88ed2b2ce7066bc44a846aef9bb4af844d33c06d823e3b",
       "document_id": "33993",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925123500000",
       "title": "Annual Action Plan Amendment Form",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/33993/637278925123500000"
@@ -116984,8 +117173,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/33995",
       "content_hash": "1c928b540c815f5e11aa1524955e67fc76eaf1b46dbbcb347d3170106e853ff6",
       "document_id": "33995",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925128030000",
       "title": "ER Statutory Checklist Compliance Thresholds",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/33995/637278925128030000"
@@ -116994,8 +117183,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/33997",
       "content_hash": "488562955d078929a55a8b417a5010ec0a3f5190721d6fc155f1b08990f44a71",
       "document_id": "33997",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925133200000",
       "title": "HOME Budget Transfer Form",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/33997/637278925133200000"
@@ -117030,8 +117219,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34001",
       "content_hash": "6435cfff20b6838ba3143320dd0ec6b8013af6144e883f1c177a49824518945b",
       "document_id": "34001",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925143030000",
       "title": "HOME Environmental Assessment Checklist",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34001/637278925143030000"
@@ -117092,8 +117281,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34011",
       "content_hash": "8417e84494ce7ca12b5882e9e46ae229c6e973e15b7839acce8a57be50d002bd",
       "document_id": "34011",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925168970000",
       "title": "HOME Statutory Checklist - with sources",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34011/637278925168970000"
@@ -117102,8 +117291,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34013",
       "content_hash": "77e17ab6ee52bfb5094f5000ee6911296c2693fc0ea9ec8deb20149b6c8a4f32",
       "document_id": "34013",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925174130000",
       "title": "HOME Statutory Checklist - Without Sources",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34013/637278925174130000"
@@ -117125,8 +117314,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34017",
       "content_hash": "6d7aeb8a9d9cb80a350f3f6d89e2c0b97be8d5b591b171673abf7ac2d9917e36",
       "document_id": "34017",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925185070000",
       "title": "IDIS Setup and Completion Form (Homebuyer)",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34017/637278925185070000"
@@ -117135,8 +117324,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34019",
       "content_hash": "375c22e20fa2d439b2ea8f37a027105b6d48c95220ec5b5e35c1722face2ecda",
       "document_id": "34019",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925190870000",
       "title": "IDIS Setup and Completion Form (Homeowner Rehab)",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34019/637278925190870000"
@@ -117145,8 +117334,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34021",
       "content_hash": "dd9c31fb0a0df36f4703f7f171f6bf189d598967ef7b4cd010fcd16e218c56d7",
       "document_id": "34021",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925196630000",
       "title": "IDIS Setup and Completion Form (Rental)",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34021/637278925196630000"
@@ -117155,8 +117344,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34023",
       "content_hash": "41606cb6a005409aab4f7f4f4289d0beec9332e77f99f32f080be6dbfa681219",
       "document_id": "34023",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925202270000",
       "title": "Instructions - ERR Submittal",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34023/637278925202270000"
@@ -117165,8 +117354,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34025",
       "content_hash": "8b43abda4d49c087842842f80dbffe4ae2a3ad8e251405b55063d52397159e2a",
       "document_id": "34025",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925208200000",
       "title": "Inter-Community Loan Repayment Form",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34025/637278925208200000"
@@ -117175,8 +117364,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34027",
       "content_hash": "4f07da25e7ce4a62689af3fcdb8933e7aebfded9e65b696eb572e16e5fe69d55",
       "document_id": "34027",
-      "last_scanned_run": 24,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637278925213830000",
       "title": "Program Income Form",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/34027/637278925213830000"
@@ -117544,7 +117733,7 @@
     "newton-doc:34102": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34102",
       "document_id": "34102",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "10-2-19 Presentation to Zoning and Planning Committee",
@@ -117592,7 +117781,7 @@
     "newton-doc:34110": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34110",
       "document_id": "34110",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "2014 Climate Action Plan Update \u2013 Greenovate Boston",
@@ -117715,7 +117904,7 @@
     "newton-doc:34132": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34132",
       "document_id": "34132",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Climate Action Plan 11-15-19",
@@ -117724,7 +117913,7 @@
     "newton-doc:34134": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34134",
       "document_id": "34134",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Climate Change Vulnerability Assessment and Action Plan - REVISED DRAFT",
@@ -117733,7 +117922,7 @@
     "newton-doc:34136": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34136",
       "document_id": "34136",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Climate Change Vulnerability Assessment - FIRST DRAFT",
@@ -117790,7 +117979,7 @@
     "newton-doc:34146": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34146",
       "document_id": "34146",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Despite Perils, Decide to Hope",
@@ -117799,7 +117988,7 @@
     "newton-doc:34148": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34148",
       "document_id": "34148",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Draft Climate Action Matrix for Discussion with Public Facilities",
@@ -117821,7 +118010,7 @@
     "newton-doc:34154": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34154",
       "document_id": "34154",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Final Draft of the Climate Vulnerability Assessment and Action Plan",
@@ -117830,7 +118019,7 @@
     "newton-doc:34156": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34156",
       "document_id": "34156",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Final, State Approved Climate Vulnerability Assessment and Action Plan",
@@ -117939,7 +118128,7 @@
     "newton-doc:34178": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34178",
       "document_id": "34178",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Racial Equity is Key to Cleveland's Comeback - Like Its Famous River, the City's Resilience is a Work in Progress",
@@ -117948,7 +118137,7 @@
     "newton-doc:34180": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34180",
       "document_id": "34180",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Redrawing the Map: How the World's Climate Zones are Shifting",
@@ -118178,11 +118367,11 @@
     "newton-doc:34316": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34316",
       "document_id": "34316",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639113343957370000",
+      "suffix": null,
       "title": "See event poster",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/34316/639113343957370000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/34316"
     },
     "newton-doc:34318": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/34318",
@@ -119396,7 +119585,7 @@
     "newton-doc:36": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/36",
       "document_id": "36",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639184978704330000",
       "title": "Water/Sewer Elderly Discount Program Application",
@@ -119535,7 +119724,7 @@
     "newton-doc:37388": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/37388",
       "document_id": "37388",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": null,
       "title": "Sidewalk/Snow Shoveling Exemption Request Due to Health and Financial Duress",
@@ -119583,7 +119772,7 @@
     "newton-doc:38": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/38",
       "document_id": "38",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639184978562200000",
       "title": "Water/Sewer Discount Program Requirements",
@@ -121568,7 +121757,7 @@
     "newton-doc:40349": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/40349",
       "document_id": "40349",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154805355600000",
       "title": "Open Space Plan",
@@ -121669,8 +121858,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/40729",
       "content_hash": "cc2da0a6d7a7e229cb3eb6db18bc331b33795c7ca5b950698cd87ddc7c89021b",
       "document_id": "40729",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637389754473970000",
       "title": "Audio Recording of Public Information Session, 10/19/20",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/40729/637389754473970000"
@@ -121692,8 +121881,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/40733",
       "content_hash": "a2e324210ba7da24d4b8ace7a0d6e0b017e414bf3038beaabca051ac742d50b2",
       "document_id": "40733",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637389766329770000",
       "title": "Recording of Public Information Session, 10/21/20",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/40733/637389766329770000"
@@ -123652,8 +123841,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/42248",
       "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "document_id": "42248",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637419185818830000",
       "title": "Additional Materials",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/42248/637419185818830000"
@@ -128850,8 +129039,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/49319",
       "content_hash": "92a0e15e0edc2507d7fab7334646c68ef0b7529e71d8087fb6e96044a9a10ed4",
       "document_id": "49319",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637429352957800000",
       "title": "Land Use Committee Audio of September 25, 2018 meeting",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/49319/637429352957800000"
@@ -128977,8 +129166,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/49339",
       "content_hash": "9c597f95a4be7e25f2528434de8678bb63151f838a05e982f7ed8cd9abe174d8",
       "document_id": "49339",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637429359560770000",
       "title": "Land Use Committee Audio of the December 11, 2018 Meeting",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/49339/637429359560770000"
@@ -129052,8 +129241,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/49351",
       "content_hash": "a6a6c2bd3080c0fa3b23ec7abbfd29bffbb1a5c3236be65dbf0f692551905f46",
       "document_id": "49351",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637429373066030000",
       "title": "Land Use Committee Audio for January 15, 2019",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/49351/637429373066030000"
@@ -129140,8 +129329,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/49367",
       "content_hash": "b4ef1197ba5e6ce01910a4387dbed42a079c5e0dc8b3577159e334fa7ab988a1",
       "document_id": "49367",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637429382241500000",
       "title": "Land Use Committee Audio for April 9, 2019",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/49367/637429382241500000"
@@ -133713,8 +133902,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/65250",
       "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "document_id": "65250",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637477721596300000",
       "title": "agendas and meeting minutes",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/65250/637477721596300000"
@@ -136213,8 +136402,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/67712",
       "content_hash": "a7b6e34f8d42e91a0121b719cf3b5d9881077a23a7e2dfa857d74ca1b3b11515",
       "document_id": "67712",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637528883142170000",
       "title": "brief introductory v",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/67712/637528883142170000"
@@ -136232,7 +136421,7 @@
     "newton-doc:67732": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/67732",
       "document_id": "67732",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639225642118200000",
       "title": "Construction Schedule",
@@ -136905,11 +137094,11 @@
     "newton-doc:68218": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/68218",
       "document_id": "68218",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116817337670000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/68218/639116817337670000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/68218"
     },
     "newton-doc:68241": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/68241",
@@ -137327,11 +137516,11 @@
     "newton-doc:68612": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/68612",
       "document_id": "68612",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116816027330000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/68612/639116816027330000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/68612"
     },
     "newton-doc:68626": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/68626",
@@ -138212,11 +138401,11 @@
     "newton-doc:69973": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/69973",
       "document_id": "69973",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815977370000",
+      "suffix": null,
       "title": "Agenda",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/69973/639116815977370000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/69973"
     },
     "newton-doc:69977": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/69977",
@@ -138377,20 +138566,20 @@
     "newton-doc:70197": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/70197",
       "document_id": "70197",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815790630000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/70197/639116815790630000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/70197"
     },
     "newton-doc:70199": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/70199",
       "document_id": "70199",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815742730000",
+      "suffix": null,
       "title": "Agenda",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/70199/639116815742730000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/70199"
     },
     "newton-doc:702": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/702",
@@ -138558,18 +138747,18 @@
     "newton-doc:70479": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/70479",
       "document_id": "70479",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815677500000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/70479/639116815677500000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/70479"
     },
     "newton-doc:70485": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/70485",
       "content_hash": "84f1b49a4fece83f4a56f50dff81aadbe54609124cd1e3fa2ed26688b087bcc5",
       "document_id": "70485",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637581372243000000",
       "title": "Audio Recording",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/70485/637581372243000000"
@@ -138668,11 +138857,11 @@
     "newton-doc:70577": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/70577",
       "document_id": "70577",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815632200000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/70577/639116815632200000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/70577"
     },
     "newton-doc:70585": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/70585",
@@ -138856,11 +139045,11 @@
     "newton-doc:70915": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/70915",
       "document_id": "70915",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815586800000",
+      "suffix": null,
       "title": "Agenda",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/70915/639116815586800000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/70915"
     },
     "newton-doc:710": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/710",
@@ -139177,11 +139366,11 @@
     "newton-doc:71347": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/71347",
       "document_id": "71347",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815540600000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/71347/639116815540600000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/71347"
     },
     "newton-doc:71441": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/71441",
@@ -139212,11 +139401,11 @@
     "newton-doc:71451": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/71451",
       "document_id": "71451",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116815496670000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/71451/639116815496670000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/71451"
     },
     "newton-doc:71601": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/71601",
@@ -139582,7 +139771,7 @@
     "newton-doc:72108": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72108",
       "document_id": "72108",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154805554730000",
       "title": "Acknowledgements",
@@ -139591,7 +139780,7 @@
     "newton-doc:72110": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72110",
       "document_id": "72110",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154805476370000",
       "title": "Appendix A",
@@ -139600,7 +139789,7 @@
     "newton-doc:72112": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72112",
       "document_id": "72112",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154042735300000",
       "title": "Appendix B",
@@ -139609,7 +139798,7 @@
     "newton-doc:72114": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72114",
       "document_id": "72114",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154042665430000",
       "title": "Appendix C",
@@ -139618,7 +139807,7 @@
     "newton-doc:72116": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72116",
       "document_id": "72116",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154042598230000",
       "title": "Appendix D",
@@ -139627,7 +139816,7 @@
     "newton-doc:72118": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72118",
       "document_id": "72118",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154805417830000",
       "title": "Section 1",
@@ -139636,7 +139825,7 @@
     "newton-doc:72120": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72120",
       "document_id": "72120",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154041870030000",
       "title": "Section 10",
@@ -139645,7 +139834,7 @@
     "newton-doc:72122": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72122",
       "document_id": "72122",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154042155270000",
       "title": "Section 11",
@@ -139654,7 +139843,7 @@
     "newton-doc:72124": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72124",
       "document_id": "72124",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154042331630000",
       "title": "Section 2",
@@ -139663,7 +139852,7 @@
     "newton-doc:72126": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72126",
       "document_id": "72126",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154042432130000",
       "title": "Section 3",
@@ -139672,7 +139861,7 @@
     "newton-doc:72132": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72132",
       "document_id": "72132",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154041143470000",
       "title": "Section 6",
@@ -139681,7 +139870,7 @@
     "newton-doc:72134": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72134",
       "document_id": "72134",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154041221670000",
       "title": "Section 7",
@@ -139690,7 +139879,7 @@
     "newton-doc:72136": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72136",
       "document_id": "72136",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154041287730000",
       "title": "Section 8",
@@ -139699,7 +139888,7 @@
     "newton-doc:72138": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72138",
       "document_id": "72138",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154040968400000",
       "title": "Section 9",
@@ -140176,7 +140365,7 @@
     "newton-doc:72855": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/72855",
       "document_id": "72855",
-      "last_scanned_run": 26,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639172209658300000",
       "title": "policy\u00a0on herbicide and pesticide use",
@@ -140662,11 +140851,11 @@
     "newton-doc:73573": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/73573",
       "document_id": "73573",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116814698230000",
+      "suffix": null,
       "title": "Agenda",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/73573/639116814698230000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/73573"
     },
     "newton-doc:73595": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/73595",
@@ -140879,11 +141068,11 @@
     "newton-doc:73884": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/73884",
       "document_id": "73884",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
-      "suffix": "639116814520130000",
+      "suffix": null,
       "title": "Board Packet Materials",
-      "url": "https://www.newtonma.gov/home/showpublisheddocument/73884/639116814520130000"
+      "url": "https://www.newtonma.gov/home/showpublisheddocument/73884"
     },
     "newton-doc:73968": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/73968",
@@ -145993,7 +146182,7 @@
     "newton-doc:80901": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/80901",
       "document_id": "80901",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639172208221270000",
       "title": "Click\u00a0here\u00a0to learn more about doing a scout project.",
@@ -146536,7 +146725,7 @@
     "newton-doc:81447": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/81447",
       "document_id": "81447",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639155745369100000",
       "title": "Newton PDF",
@@ -146747,7 +146936,7 @@
     "newton-doc:81776": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/81776",
       "document_id": "81776",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639184054696330000",
       "title": "Newton PDF",
@@ -150920,8 +151109,8 @@
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/86674",
       "content_hash": "145bc5a5028b029d9c475e17183ad026846ea0eeb036419832d03558735dac48",
       "document_id": "86674",
-      "last_scanned_run": 25,
-      "status": "parse_failed",
+      "last_scanned_run": 33,
+      "status": "download_failed",
       "suffix": "637916603046470000",
       "title": "here",
       "url": "https://www.newtonma.gov/home/showpublisheddocument/86674/637916603046470000"
@@ -153901,7 +154090,7 @@
     "newton-doc:92434": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/92434",
       "document_id": "92434",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154805277070000",
       "title": "City of Newton OSRP 2020-2027",
@@ -157265,7 +157454,7 @@
     "newton-doc:97111": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/97111",
       "document_id": "97111",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154805120970000",
       "title": "Section 4",
@@ -157274,7 +157463,7 @@
     "newton-doc:97115": {
       "canonical_url": "https://www.newtonma.gov/home/showpublisheddocument/97115",
       "document_id": "97115",
-      "last_scanned_run": 25,
+      "last_scanned_run": 33,
       "status": "download_failed",
       "suffix": "639154804951770000",
       "title": "Table of Contents",
@@ -160010,6 +160199,6 @@
       "url": "https://www.newtonma.gov/home/showpublisheddocument/99988/638181822100730000"
     }
   },
-  "run_counter": 32,
+  "run_counter": 33,
   "version": 4
 }
