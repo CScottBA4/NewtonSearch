@@ -1227,7 +1227,7 @@
     "newton-doc:97582",
     "newton-doc:9768"
   ],
-  "last_failure_fingerprint": "e2345aa298a82c68780f6d185f5b2ae36e3968eb92b3f3bdacb3b2dbafb2d756",
+  "last_failure_fingerprint": "aa9325bd9ed84b510bf2c3b2def0fdf1177a0dadd6c0352a0ef7be8f5ba1f5d2",
   "legacy_ids": [
     "088b7af1131c64a8f065f957f065e5839112ee98247ab0a8fb63c3c82a8dbcbc",
     "08cb427260287dbd8064451c1e5e36d388efb83a11134515f60ace24d2b58fcf",
@@ -162000,6 +162000,6 @@
       "url": "https://www.newtonma.gov/home/showpublisheddocument/99988/638181822100730000"
     }
   },
-  "run_counter": 44,
+  "run_counter": 45,
   "version": 4
 }
